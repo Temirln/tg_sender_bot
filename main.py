@@ -1,6 +1,7 @@
 from aiogram import Bot, Dispatcher
 from handlers import (
-    start_handler
+    start_handler,
+    get_token_handler
 )
 from dotenv import load_dotenv
 import os
@@ -16,7 +17,8 @@ async def main() -> None:
     dp = Dispatcher()
 
     dp.message.register(start_handler, Command(commands=["start", "run"]))
-
+    dp.message.register(get_token_handler)
+    
     await dp.start_polling(bot)
 
 
