@@ -14,7 +14,7 @@ async def start_handler(message: types.Message):
 
 
 async def get_token_handler(message: types.Message):
-    url = "http://127.0.0.1:8000/api/v1/add-telegram-id/"
+    url = "https://project-factory-api.vercel.app/api/v1/add-telegram-id/"
     data = {"telegram_id": message.from_user.id, "telegram_token": message.text}
     print(message.text)
     response = requests.patch(url, data)

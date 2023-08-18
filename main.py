@@ -5,11 +5,13 @@ import os
 import asyncio
 
 from aiogram.filters import Command
+from aiogram.client.session.aiohttp import AiohttpSession
 
+session = AiohttpSession(proxy=('http://137.184.96.206:3128'))
 
 async def main() -> None:
     load_dotenv()
-    bot = Bot(os.getenv("TOKEN"))
+    bot = Bot(os.getenv("TOKEN"),session=session)
     dp = Dispatcher()
 
     dp.message.register(start_handler, Command(commands=["start", "run"]))
